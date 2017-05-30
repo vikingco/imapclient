@@ -75,8 +75,6 @@ if IS_PY3 and IS_PY_33_OR_OLDER or IS_PY_278_OR_OLDER:
     main_deps.append('backports.ssl>=0.0.9')
     main_deps.append('pyopenssl>=' + info["min_pyopenssl_version"])
 
-setup_deps = common_deps + ['sphinx']
-
 test_deps = []
 # use unittest.mock, if available (at least since Python 3.4)
 try:
@@ -96,7 +94,7 @@ setup(name='IMAPClient',
       download_url='http://freshfoo.com/projects/IMAPClient/IMAPClient-%s.zip' % info['version'],
       packages=find_packages(),
       package_data=dict(imapclient=['examples/*.py']),
-      setup_requires=setup_deps,
+      setup_requires=common_deps,
       install_requires=main_deps,
       tests_require=test_deps,
       description="Easy-to-use, Pythonic and complete IMAP client library",
